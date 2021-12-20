@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<!-- Formulario de modificacion de perfil-->
+<div class="col-md-9">
+	<div class="card1">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>Your Profile</h4>
+					<hr>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<form action="/guardarPerfil" method="post">
+						<div class="form-group row">
+							<label for="username" class="col-4 col-form-label">User Name*</label>
+							<div class="col-8">
+								<input name="username" value="{{ perfil['User'] }}" class="form-control here" required="required" type="text">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="username" class="col-4 col-form-label">Nombre</label>
+							<div class="col-8">
+								<input name="nombre" value="{{ perfil['Nombre'] }}" class="form-control here" type="text">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="username" class="col-4 col-form-label">Apellidos</label>
+							<div class="col-8">
+								<input name="apellidos" value="{{ perfil['Apellidos'] }}" class="form-control here" type="text">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="username" class="col-4 col-form-label">Email</label>
+							<div class="col-8">
+								<input name="email" value="{{ perfil['Email'] }}" class="form-control here" type="text">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="username" class="col-4 col-form-label">Dirección</label>
+							<div class="col-8">
+								<input name="direccion" value="{{ perfil['Direccion'] }}" class="form-control here" type="text">
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label for="newpass" class="col-4 col-form-label">Nueva contraseña</label>
+							<div class="col-8">
+								<input name="new_password" class="form-control here" type="password">
+							</div>
+						</div>
+
+						<!-- Guardamos la contraseña antigua por si no se ha modificado-->
+						<input name="old_password" type="hidden" value="{{ perfil['Pass'] }}" <div class="form-group row">
+						<div class="offset-4 col-8">
+							<button name="submit" type="submit" class="btn btn-primary">Confirmar perfil</button>
+						</div>
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+{% endblock %}

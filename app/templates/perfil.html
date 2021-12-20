@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<!--Vista del perfil-->
+<div class="container portfolio">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="heading">
+				<img src="https://image.ibb.co/cbCMvA/logo.png" />
+			</div>
+		</div>
+	</div>
+	<div class="bio-info">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="bio-image">
+							<img src="/static/img/user.png" alt="image" height="300px">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="bio-content">
+					<h1>{{ perfil['Nombre'] }} {{ perfil['Apellidos'] }}</h1>
+					<h6><span class="fas fa-user" style="width:20px;"></span>{{ perfil['User'] }}</h6>
+					<hr>
+					<ul class="container details">
+						<li><span class="fas fa-envelope" style="width:50px;"></span>{{ perfil['Email'] }}</li>
+						<li><span class="fas fa-home" style="width:50px;"></span>{{ perfil['Direccion'] }}</li>
+					</ul>
+					<hr>
+					<div class="d-flex justify-content-center mt-5 login_container">
+						<button class="btn float-right login_btn" onclick="location.href='/modificarPerfil'">Modificar perfil</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

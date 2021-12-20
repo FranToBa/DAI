@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Algoritmo de ordenación</h1>
+</div>
+
+<p>
+  Con este algoritmo ordenamos una lista de números indroducidos a través del método de burbuja y de burbuja mejorada.<br />
+  Además, se realiza una comparación de tiempos entre ambos.
+</p>
+
+
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="lista">Lista de números separados entre comas (1,3,2) o separados con espacios (1 3 2):</label>
+    <input type="text" class="form-control w-25" name="lista">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form><br />
+
+<!-- Si han metido lista y se ha obtenido resultado-->
+{% if(lista and m and t1 and t2) %}
+
+  <h4>Lista introducida</h4>
+  <p>{{ lista }}</p>
+
+  <h4>Lista ordenada</h4>
+  <p>{{ m }}</p>
+
+  <h4>Tiempo burbuja</h4>
+  <p>{{ t1 }}</p>
+
+  <h4>Tiempo burbuja mejorada</h4>
+  <p>{{ t2 }}</p>
+
+{% endif %}
+
+{% endblock %}

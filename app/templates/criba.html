@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Criba de Eratóstenes</h1>
+</div>
+
+<p>
+  Con este algoritmo encontraremos todos los números primos menores que el número introducido.
+</p>
+
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="lista">Limite para obtener primos:</label>
+    <input type="number" min="3" class="form-control w-25" name="limite">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form><br />
+
+<!-- Si han metido limite y se ha obtenido resultado-->
+{% if(limite and primos) %}
+
+  <h3>Números primos hasta {{ limite }}:</h6>
+  <p>{{ primos }}</p>
+
+{% endif %}
+
+
+{% endblock %}

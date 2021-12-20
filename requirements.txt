@@ -1,0 +1,5 @@
+flask==1.1
+pickleshare==0.7.5
+pymongo
+Flask-RESTful
+flask-cors

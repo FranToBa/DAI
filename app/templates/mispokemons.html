@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block Content %}
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Pokemons creados por {{ user }}</h1>
+</div>
+
+<!-- Botón para añadir un nuevo pokemon -->
+<form action="" method="post" class="form-inline">
+  <label for="ins">
+    <h5>Puede insertar un nuevo pokemon aquí:</h5>
+  </label>
+  <input class="btn btn-primary ml-4" type="submit" name="accion" value="Insertar">
+</form>
+
+
+<div class="overflow-auto mt-5" style="max-height: 600px; ">
+  <ul class="list-group" id="tabla_borrado">
+    <!-- Para cada pokemon, mostrar la lista-->
+    {% for r in pokemons %}
+
+    <li class="list-group-item" >
+      <ul class="list-group list-group-horizontal" id="lista">
+        <li class="list-group-item" id="lista"><img src="{{ r['img'] }}" width="100px" /></li>
+        <li class="list-group-item" id="lista"><label><b>Nombre: </b></label> {{ r['name'] }}</li>
+        <li class="list-group-item" id="lista"><label><b>Tipo: </b></label> {{ r['type'] }}</li>
+        <li class="list-group-item" id="lista"><label><b>Altura: </b></label> {{ r['height'] }}</li>
+        <li class="list-group-item" id="lista"><label><b>Peso: </b></label> {{ r['weight'] }}</li>
+        <li class="list-group-item" id="lista"><label><b>Debilidad: </b></label> {{ r['weaknesses'] }}</li>
+        <form action="" method="post" >
+          <input type="hidden" name="id" value="{{ r['_id'] }}">
+          <li class="list-group-item" id="lista"><input class="boton_mod" type="submit" name="accion" value="Modificar"></li>
+        </form>
+        <li class="list-group-item" id="lista"><button value="{{ r['_id'] }}" class="Borrado"> Borrar</li>
+      </ul>
+    </li>
+
+    {% endfor %}
+
+  </ul>
+  <div id="f_borrar">
+  </div>
+</div>
+
+
+{% endblock %}

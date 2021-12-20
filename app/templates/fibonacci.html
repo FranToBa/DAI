@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Sucesión de Fibonacci</h1>
+</div>
+
+<p>
+  Este método devuelve el número n-ésimo de la sucesión de Fibonacci.
+</p>
+
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="lista">Introducir n:</label>
+    <input type="number" min="1" class="form-control w-25" name="n">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form><br />
+
+<!-- Si han metido limite y se ha obtenido resultado-->
+{% if(n and a) %}
+
+  <p>El numero {{ n }}-ésimo de la sucesión de Fibonacci es {{ a }}</p>
+
+{% endif %}
+
+{% endblock %}

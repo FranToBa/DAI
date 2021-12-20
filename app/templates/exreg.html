@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Expresiones regulares</h1>
+</div>
+
+<p>
+  Esta sección se encarga de identificar palabras seguidas de un espacio y una única letra mayúscula (por ejemplo: Apellido N), correos electrónicos válidos o números de tarjeta de crédito cuyos dígitos estén separados por - o espacios en blanco cada
+  paquete de cuatro dígitos.
+</p>
+
+<form action="" method="POST">
+  <div class="form-group">
+    <label for="lista">Introducir cadena:</label>
+    <input type="text" class="form-control w-25" name="cadenaex">
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+</form><br />
+
+<!-- Si han metido cadena y se ha obtenido resultado-->
+{% if(cadena and resultado) %}
+
+  <h4>Cadena introducida: {{ cadena }}</h4>
+  <p>{{ resultado }}</p>
+
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+
+<!-- Formulario de modificacion de perfil-->
+<div class="col-md-9">
+  <div class="card1">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Borrar o modificacion-->
+          {% if read != "" %}
+          <h4>Borrar Pokemon</h4>
+          {% else %}
+          <h4>Modificar Pokemon</h4>
+          {% endif %}
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <!-- Formulario con los valores del pokemon pasado, poniendolos como solo lectura o no-->
+          <form action="/modificarpokemon" method="post">
+            <div class="form-group row">
+              <label for="nombre" class="col-4 col-form-label">Nombre</label>
+              <div class="col-8">
+                <input name="nombre" class="form-control here" value="{{pokemon['name']}}" {{read}} required="required" type="text">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Tipo: </label>
+              <div class="col-8">
+                {% for tipo in tipos %}
+                <div class="form-check form-check-inline">
+                  {% if tipo in pokemon['type'] %}
+                  <input type="checkbox" class="form-check-input" name="tipo[]" value={{tipo}} checked {{dis}}>
+                  <label class="form-check-label" for="tipo"> {{tipo}}</label><br>
+                  {% else %}
+                  <input type="checkbox" class="form-check-input" name="tipo[]" value={{tipo}} {{dis}}>
+                  <label class="form-check-label" for="tipo"> {{tipo}}</label><br>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Altura</label>
+              <div class="col-8">
+                <input name="altura" step="0.1" class="form-control here" value="{{pokemon['height']}}" {{read}} required="required" type="number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Peso</label>
+              <div class="col-8">
+                <input name="peso" step="0.1" class="form-control here" value="{{pokemon['weight']}}" {{read}} required="required" type="number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Debilidades: </label>
+              <div class="col-8">
+                {% for tipo in tipos %}
+                <div class="form-check form-check-inline">
+                  {% if tipo in pokemon['weaknesses'] %}
+                  <input type="checkbox" class="form-check-input" name="debilidades[]" value={{tipo}} checked {{dis}}>
+                  <label class="form-check-label" for="debs"> {{tipo}}</label><br>
+                  {% else %}
+                  <input type="checkbox" class="form-check-input" name="debilidades[]" value={{tipo}} {{dis}}>
+                  <label class="form-check-label" for="debs"> {{tipo}}</label><br>
+                  {% endif %}
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="imagen" class="col-4 col-form-label">Enlace de imagen</label>
+              <div class="col-8">
+                <input name="imagen" class="form-control here" value="{{pokemon['img']}}" {{read}} required="required" type="text">
+              </div>
+            </div>
+
+            <div class="offset-4 col-8">
+              {% if read != "" %}
+              <input type="hidden" name="id" value="{{pokemon['_id']}}" />
+              <button name="accion" value="Confirmar borrado" type="submit" class="btn btn-primary">Borrar pokemon</button>
+              {% else %}
+              <input type="hidden" name="id" value="{{pokemon['_id']}}" />
+              <button name="accion" value="Confirmar modificacion" type="submit" class="btn btn-primary">Modificar pokemon</button>
+              {% endif %}
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

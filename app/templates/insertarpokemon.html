@@ -1,0 +1,73 @@
+{% extends "index.html" %}
+
+{% block Content %}
+
+<!-- Formulario de modificacion de pokemon-->
+<div class="col-md-9">
+  <div class="card1">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12">
+          <h4>Insertar Pokemon</h4>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="/insertarpokemon" method="post">
+            <div class="form-group row">
+              <label for="nombre" class="col-4 col-form-label">Nombre</label>
+              <div class="col-8">
+                <input name="nombre" class="form-control here" required="required" type="text">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="tipo" class="col-4 col-form-label">Tipo: </label>
+              <div class="col-8">
+                <!-- Con los tipos pasados, mostrar-->
+                {% for tipo in tipos %}
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" class="form-check-input" name="tipo[]" value={{tipo}}>
+                  <label class="form-check-label" for="tipo"> {{tipo}}</label><br>
+                </div>
+                {% endfor %}
+              </div <div class="form-group row">
+              <label for="alt" class="col-4 col-form-label">Altura</label>
+              <div class="col-8">
+                <input name="altura" step="0.1" class="form-control here" required="required" type="number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="peso" class="col-4 col-form-label">Peso</label>
+              <div class="col-8">
+                <input name="peso" step="0.1" class="form-control here" required="required" type="number">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="devs" class="col-4 col-form-label">Debilidades: </label>
+              <div class="col-8">
+                {% for tipo in tipos %}
+                <div class="form-check form-check-inline">
+                  <input type="checkbox" class="form-check-input" name="debilidades[]" value={{tipo}}>
+                  <label class="form-check-label" for="debs"> {{tipo}}</label><br>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="imagen" class="col-4 col-form-label">Enlace de imagen</label>
+              <div class="col-8">
+                <input name="imagen" class="form-control here" required="required" type="text">
+              </div>
+            </div>
+
+            <div class="offset-4 col-8">
+              <button name="submit" type="submit" class="btn btn-primary">Insertar pokemon</button>
+            </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
